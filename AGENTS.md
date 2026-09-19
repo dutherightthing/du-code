@@ -45,7 +45,7 @@ This is non-negotiable because Jerry can't read the code. Follow [`sops/verifica
 Self-review pass before showing him: [`sops/code-review.md`](sops/code-review.md). Then check every box in [`sops/definition-of-done.md`](sops/definition-of-done.md).
 
 ### 7. Capture what you learned
-Ask Jerry 1–2 quick questions about what changed. Only after he confirms, append a dated line to [`decisions-log.md`](decisions-log.md) and, if it's a standing preference, to [`your-eng-profile.md`](your-eng-profile.md). This is how the harness gets smarter.
+Follow [`sops/learning-loop.md`](sops/learning-loop.md). In short: ask Jerry 1–2 questions, write a ≤5-line block to [`decisions-log.md`](decisions-log.md) (tagged with impact), and promote to [`your-eng-profile.md`](your-eng-profile.md) **only if it passes the promotion gate** (recurred ≥2×, or Jerry said "always," or it's a hard fact). One project alone never rewrites your defaults — that's the anti-drift rule. This is how the harness gets smarter without bloating or drifting.
 
 ---
 
@@ -56,6 +56,7 @@ Always in play, pulled on demand:
 - [`sops/code-review.md`](sops/code-review.md) — self-review before showing Jerry.
 - [`sops/testing.md`](sops/testing.md) — what to test and when.
 - [`sops/git-hygiene.md`](sops/git-hygiene.md) — branches, commits, never lose work.
+- [`sops/learning-loop.md`](sops/learning-loop.md) — how Capture keeps the profile lean and drift-proof.
 
 ## Guardrails
 - **Explain in plain English, always.** Jerry doesn't read code. Every status update says what you did and what it means for him, not just what files changed.

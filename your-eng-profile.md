@@ -31,5 +31,5 @@ Standing constraints and preferences for code projects. Read before scoping; **n
 - Flag anything that costs money before building on it.
 
 ## Learned preferences
-_(Append confirmed, recurring preferences here with a date. Keep the raw history in `decisions-log.md`.)_
+_(Only **promoted** learnings live here — recurred across ≥2 projects, or Jerry said "always," or a hard fact. Per the promotion gate in [`sops/learning-loop.md`](sops/learning-loop.md). One project's one-off choice stays in `decisions-log.md`, not here. Keep this file lean — ~2 screens max; run a consolidation pass if it bloats.)_
 -
