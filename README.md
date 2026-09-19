@@ -53,7 +53,7 @@ No installs required for the core (it's all markdown). Say:
 The toolbelt tools (spec-kit, ponytail, Playwright, Context7) are optional power-ups — install them per their cards when a project benefits.
 
 ## Setup checklist
-- [ ] Install spec-kit, ponytail, Playwright, Context7 (see [`toolbelt/README.md`](toolbelt/README.md)) — optional but recommended.
-- [ ] Point Hermes at `du-code/AGENTS.md` so both runtimes share the harness.
-- [ ] Consider a global rule: "For code projects, read du-code/AGENTS.md first" (like the du-design one).
-- [ ] Push to GitHub when ready (Jerry's call — publishing is his to trigger).
+- [x] Point Hermes at `du-code/AGENTS.md` — loader skill in the `orthogonal-work` profile (2026-09-19).
+- [x] Global Claude Code rule — added to `~/.claude/CLAUDE.md` (2026-09-19).
+- [x] Push to GitHub — https://github.com/dutherightthing/du-code (private) (2026-09-19).
+- [ ] Install spec-kit, ponytail, Playwright, Context7 (see [`toolbelt/README.md`](toolbelt/README.md)) — in progress.
