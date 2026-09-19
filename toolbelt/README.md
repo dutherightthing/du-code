@@ -19,4 +19,5 @@ Fill in as you install each (leave a dated line):
 - [ ] ponytail —
 - [ ] Playwright —
 - [ ] Context7 MCP —
-- [ ] Hermes reads `du-code/AGENTS.md` —
+- [x] Hermes reads `du-code/AGENTS.md` — 2026-09-19, loader skill in `orthogonal-work` profile (see [`hermes.md`](hermes.md))
+- [x] Claude Code auto-loads it — 2026-09-19, rule added to `~/.claude/CLAUDE.md`
