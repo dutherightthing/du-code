@@ -15,6 +15,18 @@ Format:
 
 ---
 
+## 2026-09-21 — orth-moneymaker: radial layout + logo extraction bugs (web app) · impact: med
+- Built: independent per-element radial positioning (translate by pixel radius, not shared flex order) for the wheel's logo+text labels, so "logo always outer, text always inner" holds regardless of the 180° flip applied for left-half readability; a shared flex row conflated "fix orientation" with "which element sits closer to center," causing the logo to visually swap sides depending on wheel position.
+- Also: hand-extracting one brand's logo paths from a multi-tone wordmark SVG and recoloring them solid (Shopify's bag+swoosh → solid white) collapsed into an unrecognizable blob at small size — the two-tone shading was load-bearing for legibility, not decorative. Redrew as a plain hand-built glyph (rect + arc) instead of trusting a "should be fine" recolor.
+- Verified by: browser screenshots comparing before/after on both the flip bug (logo/text position stayed consistent across all 8 wedges after the fix) and the Shopify icon (visually confirmed as a recognizable bag, not a blob).
+- Learned: rendering something and *looking at it* caught both bugs; reasoning about the CSS transform math in the abstract did not predict the flex-order bug correctly beforehand. → [candidate: "for any rotated/transformed layout, verify visually before trusting the geometry math"]
+
+## 2026-09-21 — securedajob 1b: coverage, solved rather than reported (web app) · impact: high
+- Built: Aviato as a second people source (whole-company roster ranked by seniority + department when title search is thin), Aviato company search as a startup-aware domain resolver, and a one-call render+extract rung for JS-only job pages.
+- Changed from first plan: I had written off small companies as a provider limit. Wrong framing — it was a provider *choice*. Benchmarking the marketplace found one returning 54 people where icypeas returns 0, for $0.02.
+- Verified by: all four failing links live. Lightfield 0 -> 13 (CEO, CTO, 4 co-founders, plus the recruiter who posted the req — email resolved to chris.doege@lightfield.app). metacareers 0 -> 20. Typical cost unchanged ~$0.023; only failures escalate.
+- Learned: "the data doesn't exist" is a claim about one vendor, not about the world. Benchmark a second source before reporting a limit. → [candidate: "a coverage gap is a vendor result, not a fact"]
+
 ## 2026-09-21 — orth-moneymaker (web app) · impact: med
 - Built: single-file static HTML/CSS/JS wheel spinner (no build step, no framework) for UGC creators — 8 real Orthogonal use cases as wheel segments, a hidden settings panel to force a specific result, spin-to-target rotation math, localStorage persistence.
 - Changed from first plan: v1 shipped with a visible "🔒 Locked: X" pill above the wheel so Jerry could confirm the rig at a glance. Jerry corrected this — the site is filmed ON CAMERA and shown to the IG/TikTok audience, so anything that reveals the wheel is rigged defeats the entire point. Removed; the settings panel is now the only place state is visible.
