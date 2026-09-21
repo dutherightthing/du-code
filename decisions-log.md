@@ -15,6 +15,12 @@ Format:
 
 ---
 
+## 2026-09-21 — orth-moneymaker: found Simple Icons after two failed logo attempts (web app) · impact: med
+- Built: swapped a hand-drawn Shopify bag glyph (my own approximation, built after a Wikimedia wordmark-recolor attempt also failed) for the real official glyph from Simple Icons (`cdn.jsdelivr.net/npm/simple-icons/icons/<slug>.svg`) — single-path, official shape, exactly the icon-only asset the badge needed.
+- Changed from first plan: I went straight to Wikimedia Commons for brand logos and, when that gave a wordmark instead of an icon, hand-extracted/recolored paths or redrew shapes myself rather than checking whether a purpose-built icon library already solved this. Jerry called this out directly ("you have access to context dev and everything, why can't you literally pull the logo").
+- Verified by: browser screenshot showing a correct, recognizable bag icon in place of the previous blob.
+- Learned: for any well-known brand/app icon, check Simple Icons (or an equivalent purpose-built icon library) before falling back to extracting or hand-drawing from a full logo/wordmark — it exists specifically to avoid this class of mistake. → [candidate: "check for a purpose-built asset library before hand-building icon art" — this failed twice on the same logo before the fix, watch for recurrence on a different project]
+
 ## 2026-09-21 — orth-moneymaker: radial layout + logo extraction bugs (web app) · impact: med
 - Built: independent per-element radial positioning (translate by pixel radius, not shared flex order) for the wheel's logo+text labels, so "logo always outer, text always inner" holds regardless of the 180° flip applied for left-half readability; a shared flex row conflated "fix orientation" with "which element sits closer to center," causing the logo to visually swap sides depending on wheel position.
 - Also: hand-extracting one brand's logo paths from a multi-tone wordmark SVG and recoloring them solid (Shopify's bag+swoosh → solid white) collapsed into an unrecognizable blob at small size — the two-tone shading was load-bearing for legibility, not decorative. Redrew as a plain hand-built glyph (rect + arc) instead of trusting a "should be fine" recolor.
