@@ -15,6 +15,12 @@ Format:
 
 ---
 
+## 2026-09-21 — orth-moneymaker: anchored radial layout to the wrong end (web app) · impact: med
+- Built: the wheel's logo+text pair now anchors to the rim (`dialRadius - logoSize - margin`) and works inward from there, instead of anchoring to the hub (`hubRadius + fixedGap`) and working outward.
+- Changed from first plan: anchoring from the hub produced a small ABSOLUTE radius that doesn't grow when the wheel renders bigger (up to 460px on a wide viewport) — the whole outer ring sat empty and everything looked "bunched near the center" exactly as Jerry described from his screenshot, even though at the narrow viewport I'd tested it looked fine.
+- Verified by: my own screenshot before shipping was at a viewport where the bug wasn't visible; Jerry's screenshot at a different (larger) size exposed it immediately.
+- Learned: this is the SECOND layout-math bug in the same feature that only showed up outside the one viewport I happened to test (first was the flex-order flip bug two rounds ago) — a fixed-radius calculation needs to be checked against both the smallest AND largest values the container can actually render at, not just whatever the preview happened to be sized to. → [candidate, now recurred twice in-project: "for a responsive radial/transform layout, test at min AND max container size before shipping, not one arbitrary viewport"]
+
 ## 2026-09-21 — orth-moneymaker: found Simple Icons after two failed logo attempts (web app) · impact: med
 - Built: swapped a hand-drawn Shopify bag glyph (my own approximation, built after a Wikimedia wordmark-recolor attempt also failed) for the real official glyph from Simple Icons (`cdn.jsdelivr.net/npm/simple-icons/icons/<slug>.svg`) — single-path, official shape, exactly the icon-only asset the badge needed.
 - Changed from first plan: I went straight to Wikimedia Commons for brand logos and, when that gave a wordmark instead of an icon, hand-extracted/recolored paths or redrew shapes myself rather than checking whether a purpose-built icon library already solved this. Jerry called this out directly ("you have access to context dev and everything, why can't you literally pull the logo").
