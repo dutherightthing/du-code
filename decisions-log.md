@@ -15,6 +15,12 @@ Format:
 
 ---
 
+## 2026-09-24 — securedajob close-out (web app) · impact: low
+- Built: GitHub repo (dutherightthing, private), README rewrite, 9 fresh fixtures, registrable-domain fix (open.spotify.com → spotify.com). Merged + pushed `064cb0e`.
+- Changed from first plan: 3 of 7 new real links failed (Spotify, Notion, Samsara) and a passing one leaked "Head of Product Support" into PM peers. Documented as next session's first work instead of relaxing the fixtures.
+- Verified by: live run of the 9 new/refreshed rows; 16 offline checks; gitleaks over the full history before the first push.
+- Learned: refreshing fixtures with fresh real links is the cheapest bug-finder we have; expect ~40% of new links to expose something. For a second GitHub account, use a repo-local credential helper rather than switching the global gh account. → [logged]
+
 ## 2026-09-24 — securedajob speed + review (web app) · impact: med
 - Built: overlapped the LLM + free web search with the paid DB search/roster; per-host "free read misses location" memory; 5 review fixes. Merged `bb020aa`.
 - Changed from first plan: timing logs showed 4 serial fallbacks (company lookup, roster, LLM, web) of ~3s each, so overlapping them beat any single-step optimisation. The review caught an unconditional `await` on the speculative LLM call, which let a slow provider stall full answers.
