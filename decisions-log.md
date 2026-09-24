@@ -15,6 +15,43 @@ Format:
 
 ---
 
+## 2026-09-24 — securedajob TinyFish build + cheapest LLM (web app) · impact: med
+- Built: free TinyFish page reader + LinkedIn web fallback + LLM title mapping (branch `1c-tinyfish`, 247c5b4).
+- Changed from first plan: Orthogonal HOLDS $5 before every OpenRouter call, so a $2.71 balance 402'd a $0.0006 call; added Baseten GLM-4.7 (flat $0.005) as the fallback. The cheap DeepSeek/GLM OpenRouter aliases spent all their tokens thinking and never answered.
+- Verified by: live regress batches 1 (9 rows) PASS incl. Cloudflare 0→4 security peers; 16 offline checks. Spent ~$1.00 vs a $0.15 estimate — debugging reruns.
+- Learned (Jerry, 2026-09-24): my one-off probes must go through the Orthogonal MCP, not the app's prod key in `.env.local`; local end-to-end runs get their own dev key. → [logged]
+- Learned: pick "~…-latest" OpenRouter aliases for no-upkeep models, and check Orthogonal's pre-auth hold, not just the price. Debug reruns cost money too, so quote them in the estimate. → [candidate, 1st]
+
+## 2026-09-24 — securedajob TinyFish + Riveter check (web app) · impact: med
+- Built: nothing yet. Made 2 free live calls through the Orthogonal MCP: TinyFish Fetch on Meta + SharkNinja job links, and TinyFish Search for "Cloudflare security engineer site:linkedin.com/in".
+- Changed from first plan: TinyFish Fetch ($0) read Meta's title, which currently needs a $0.025 scrapegraph call, but not its location. TinyFish Search ($0) returned 10 real Cloudflare security staff with LinkedIn URLs, but mixed in India profiles. Riveter bills $0.025 per cell, and its scrape costs $0.209, so it is too expensive for a live lookup.
+- Verified by: `payment: null` on both TinyFish calls; Riveter prices read from get_details.
+- Learned: TinyFish Search with site:linkedin.com/in is a free people fallback when paid people-search comes back thin. Country must still be checked per result. → [candidate, 1st]
+
+## 2026-09-23 — canvas-vault conversion fidelity (script) · impact: med
+- Built: nothing new. Checked whether the econometrics markdown is safe to teach from (RMSE, MAPE, confidence intervals).
+- Changed from first plan: slide charts and formula screenshots did not come through; the notes point at image files that were never saved. A PDF formula was split across lines, while the same interval written out in prose survived.
+- Verified by: reading `Forecasting.md`, `Lecture Note 6`, and `Review Question.md` in `vault/2026Fall-ECN3620-01`.
+- Learned: markitdown text is usable for definitions and typed numbers, and not safe as a guarantee when the source put the formula in a picture. → [logged]
+
+## 2026-09-23 — canvas-vault first live sync (script) · impact: med
+- Built: first real Babson Canvas pull — 3 current courses, 175 markdown notes in `vault/`.
+- Changed from first plan: a student token gets 403 on the course Files tab; the files are on modules and linked from pages. "Active" enrollment also includes years of trainings, so only courses whose dates include today are synced.
+- Verified by: live `sync.py` (175 notes, 0 conversion failures) and a rerun that updated 0 files.
+- Learned: Babson student tokens must follow module items and page file links; `markitdown` without the pdf/pptx/docx extras records a failed conversion as success and then skips it forever. → [logged]
+
+## 2026-09-22 — Jev selector gap closure (public web app) · impact: high
+- Built: scheduled daily catalog refresh, complete per-provider endpoint browser, five recorded-response route tests, and four deterministic desktop/mobile Playwright screenshot checks.
+- Changed from first plan: visual QA no longer depends on an interactive browser connector; Playwright uses installed Chrome, reduced motion, intercepted search responses, and checked-in baselines without spending Jev credits.
+- Verified by: 16 unit/integration tests, four Chrome visual tests, lint, production build, zero npm vulnerabilities, and a no-xfront catalog sync preserving curated assets across 65 APIs.
+- Learned: animated product surfaces need deterministic reduced-motion fixtures for visual regression, and catalog automation must preserve curated local assets when upstream design repositories are unavailable. → [logged]
+
+## 2026-09-22 — Jev selector pre-finish review (public web app) · impact: high
+- Built: reviewed the full uncommitted selector diff; added layered request/cost controls, strict Jev ID validation, controlled timeout handling, responsive physics bodies, logo-file checks, and password-change session revocation.
+- Changed from first plan: prompt length and schema validation were treated as abuse protection, but neither limits paid request volume; no-match traffic also bypassed throttling while writing logs.
+- Verified by: 11 tests, lint, Next.js production build, zero production dependency vulnerabilities, clean Gitleaks scan, and a direct Neon test proving requests 1–30 pass and 31 is blocked without calling Jev.
+- Learned: paid judgment endpoints need layered controls before launch, and model-selected IDs must be resolved strictly against the supplied candidate set. Full reference: `references/past-projects/jev-selector.md`. → [logged]
+
 ## 2026-09-21 — orth-moneymaker: confetti, theme, and user-editable segments (web app) · impact: med
 - Built: canvas-confetti CDN burst on the result reveal, a CSS-variable dark/light theme toggle, and full segment customization (rename up to 4 words + icon picker from a 16-item library), both synced live to the wheel and the result card.
 - Changed from first plan: the wheel's radial text layout previously sized itself by measuring the actual label strings; once labels became user-editable and unbounded, switched to a fixed `LABEL_MAX_WIDTH` constant driving the layout instead, with per-label overflow detection triggering a smaller font + two-line wrap — so a long custom name can never distort the wheel's geometry, only wrap within its own space.
@@ -85,6 +122,30 @@ Format:
 - Verified by: live Stripe manual-shape call returning the 2 real "People Partners" leads (the old code returned 10 unrelated directors), live Figma/Greenhouse link at 10+10 in 3.5s, `npm test` green incl. a new fail-closed check.
 - Learned: a 200 with good-looking results is not a correct result — reading the live payload closely found a bullet separator leaking `"CA • New York"` into the API as a city name; one character fixed it and moved that req 8 → 10 recruiters. → [candidate: "read the live output, not the status code" — pairs with the existing "probe the API with real money" candidate]
 - Learned: precision and a minimum-results target can conflict, and the target is usually the thing that's wrong. A precise title returns 2 excellent peers where a vague one returned 10 useless ones; padding the list back to 5 is a product decision, not a bug fix. → [logged]
+
+## 2026-09-22 — securedajob thin-results fill (web app / API) · impact: med · state: logged
+- Built: short lists fill from Aviato's full roster (function- and country-filtered), expired Workday reqs detected free, staffing/RPO recruiters dropped. Verified by: full live suite 20 pass / 1 ask (by design) / 1 expired, 0 fail; Ashby UK 1 → 5 people.
+- Learned (hard fact): Orthogonal pagination — page 2+ with `parentRequestId` bills $0; Aviato pages are 1-indexed and "0" aliases page 1. Read the endpoint's own billing notes before assuming each page costs. → [logged]
+- Learned (hard fact): abstractapi headcount is unusable for sizing (Figma "100001+", SevenRooms 128). Don't gate logic on it. → [logged]
+- Learned: literal-title search misses compound titles — icypeas has 23 Cloudflare security staff; "AI Security Research & Red Team Engineer" finds 0. Title→function mapping is the next real gap. → [candidate]
+
+## 2026-09-23 — securedajob agency filter + merge (web app / API) · impact: medium
+- Jerry's call: keep staffing/RPO recruiters (outsourced recruiters often own the req; a firm-name list needs upkeep). Removed the list; only titles that say contract/contractor/freelance are still dropped. Merged 1b to main (local, no remote).
+- Learned: before telling Jerry a feature needs a new vendor key, check Orthogonal — it proxies LLMs (OpenRouter, Baseten) on the existing key and bill. → [candidate, 1st occurrence]
+- Learned: jev (TypeSafe) *selects/judges* from candidates, it does not *generate*. Fits "rank these real titles against the posting", not "invent titles". → [logged; also in project memory jev-is-typesafe]
+
+## 2026-09-22 — securedajob relevance floor (web app / API) · impact: high
+- Built Jerry's hard rules: same stated country, nobody below the bar (interns/contractors/support/SDR/frontline), peers = function + its managers, small-co mode <200. Provider failures now fall through to the next source / LinkedIn, never an error.
+- Live run found 3 bugs no offline test could: akta's own record files Roku under 6-inc.com; a board renamed itself "SevenRooms, a DoorDash company"; "Engineering Manager" matched a Mechanical Engineer req.
+- Learned (Jerry, standing): on any gap, search Orthogonal + our history for cheap fallbacks and present options with trade-offs — never report "provider down". → [promoted to project memory: fallbacks-not-failures]
+- Learned: a free directory can be confidently wrong about *itself* (akta/Roku). Two free sources that disagree are a signal, not noise — measure disagreement across the fixture list before trusting either. → [candidate, 1st occurrence]
+- Miss: estimated the live run at ~$0.50; with re-runs after fixes it was ~$1. Quote re-run cost up front.
+
+## 2026-09-22 — securedajob 1b pre-merge audit (web app / API) · impact: medium
+- Audited the 18-commit branch at the three spots the handoff flagged. `npm test` green, tsc clean.
+- Found: "Toronto, ON, CA" searched Toronto, *California* — same class as last session's Indiana bug, missed because the fix only ranked spelled-out countries above states. Fixed + 6 test cases (incl. "Dublin, CA" staying US).
+- Learned: when a bug is fixed, probe its *siblings* with a 10-line script before closing (same parser, other formats) — cheaper than waiting for a live link to find it. → [candidate, 1st occurrence]
+- Probed akta for $0 before touching aktaPick ("Harvey" → harvey.ai, 6.5× gap): guard holds, no change.
 
 ## 2026-09-21 — securedajob 1b contact targeting (web app / API) · impact: high
 - Built: job link → 10 peers + 10 recruiters near the *job's* office, $0.04/5s per link; email split to an on-demand endpoint ($0.08/contact) because enriching all 20 up front cost $1.60.

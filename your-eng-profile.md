@@ -32,4 +32,5 @@ Standing constraints and preferences for code projects. Read before scoping; **n
 
 ## Learned preferences
 _(Only **promoted** learnings live here — recurred across ≥2 projects, or Jerry said "always," or a hard fact. Per the promotion gate in [`sops/learning-loop.md`](sops/learning-loop.md). One project's one-off choice stays in `decisions-log.md`, not here. Keep this file lean — ~2 screens max; run a consolidation pass if it bloats.)_
+- **Learnings are recorded automatically**, in the same turn they're reported, to `decisions-log.md` — agents triage them later. Reports say "Recorded learning" + where, never "suggested". (Jerry said so, 2026-09-22.)
 -

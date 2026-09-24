@@ -40,8 +40,8 @@ Tag each log entry `impact: high | med | low`. **Impact changes how much we *lea
 - **Facts vs. tastes:** facts promote freely; tastes/preferences need recurrence. This stops a big, emotionally-charged project from overwriting defaults with a one-off mood.
 
 ## The Capture procedure (Step 7, concretely)
-1. Ask Jerry 1–2 questions: *what changed from the first plan? anything you'll always want this way?*
-2. Write the ≤5-line block to `decisions-log.md` (newest on top), with `impact:` tag and `verified by:`.
+1. **Record automatically — don't wait for a yes.** Every learning worth reporting gets written to `decisions-log.md` in the same turn it is reported (Jerry, 2026-09-22: "future learnings automatically recorded, because we will have agents triaging them"). In the report, say **"Recorded learning"** and where it went — never "suggested learning", which left him unsure whether it was saved. Ask him only when a learning needs *his* judgment (a preference, not a fact).
+2. Write the ≤5-line block to `decisions-log.md` (newest on top), with `impact:` tag and `verified by:`. Mark the state (`logged` / `candidate`) so the triage agents can promote or prune it.
 3. Decide state: does it meet the promotion gate? If yes → add/update one lean line in `your-eng-profile.md`. If no → leave it Logged (or mark `candidate`).
 4. If high-impact → add a `references/past-projects/<name>.md` note.
 5. Only write **confirmed** learnings. When unsure, log as candidate, don't promote.
