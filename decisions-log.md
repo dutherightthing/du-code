@@ -15,6 +15,12 @@ Format:
 
 ---
 
+## 2026-09-24 — FindTheRightAPI retrieval and catalog closeout (public web app) · impact: high
+- Built: a search-only Orthogonal discovery site with a canonical 69-API / 1,031-endpoint catalog, guarded retrieval, Jev judgment, anonymous query analytics, and persistent pile-to-carousel motion.
+- Changed from first plan: an 80-endpoint test hid providers outside Jev's actual 18-provider window; raw counts included retired Brand.dev; global lexical blending regressed precise weather, VM, and speech searches.
+- Verified by: 105 passing tests, lint/build, live Jev checks, canonical TinyFish dry runs, Vercel checks, and a production search that made no provider call.
+- Learned: evaluate the exact production funnel, count post-filter data, and use one upstream API group when a product spans base URLs. → [candidate; full reference: `references/past-projects/jev-selector.md`]
+
 ## 2026-09-21 — orth-moneymaker: confetti, theme, and user-editable segments (web app) · impact: med
 - Built: canvas-confetti CDN burst on the result reveal, a CSS-variable dark/light theme toggle, and full segment customization (rename up to 4 words + icon picker from a 16-item library), both synced live to the wheel and the result card.
 - Changed from first plan: the wheel's radial text layout previously sized itself by measuring the actual label strings; once labels became user-editable and unbounded, switched to a fixed `LABEL_MAX_WIDTH` constant driving the layout instead, with per-label overflow detection triggering a smaller font + two-line wrap — so a long custom name can never distort the wheel's geometry, only wrap within its own space.
