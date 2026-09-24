@@ -15,6 +15,12 @@ Format:
 
 ---
 
+## 2026-09-24 — securedajob speed + review (web app) · impact: med
+- Built: overlapped the LLM + free web search with the paid DB search/roster; per-host "free read misses location" memory; 5 review fixes. Merged `bb020aa`.
+- Changed from first plan: timing logs showed 4 serial fallbacks (company lookup, roster, LLM, web) of ~3s each, so overlapping them beat any single-step optimisation. The review caught an unconditional `await` on the speculative LLM call, which let a slow provider stall full answers.
+- Verified by: 27/27 live suite on the local-testing key; large links 14–34s → 4–11s.
+- Learned: measure per-stage timings before optimising. And when a call starts speculatively, only await it on the path that needs it, billing its ceiling otherwise. → [candidate, 1st]
+
 ## 2026-09-24 — securedajob TinyFish build + cheapest LLM (web app) · impact: med
 - Built: free TinyFish page reader + LinkedIn web fallback + LLM title mapping (branch `1c-tinyfish`, 247c5b4).
 - Changed from first plan: Orthogonal HOLDS $5 before every OpenRouter call, so a $2.71 balance 402'd a $0.0006 call; added Baseten GLM-4.7 (flat $0.005) as the fallback. The cheap DeepSeek/GLM OpenRouter aliases spent all their tokens thinking and never answered.
