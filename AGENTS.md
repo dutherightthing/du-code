@@ -57,10 +57,12 @@ Always in play, pulled on demand:
 - [`sops/testing.md`](sops/testing.md) — what to test and when.
 - [`sops/git-hygiene.md`](sops/git-hygiene.md) — branches, commits, never lose work.
 - [`sops/learning-loop.md`](sops/learning-loop.md) — how Capture keeps the profile lean and drift-proof.
+- [`sops/handoff-to-jerry.md`](sops/handoff-to-jerry.md) — **every turn that ends with something for Jerry to do**: don't stop early, say what's blocked first, give click-by-click steps with links and paste-ready text.
 
 ## Guardrails
 - **Explain in plain English, always.** Jerry doesn't read code. Every status update says what you did and what it means for him, not just what files changed.
 - **Show, don't tell.** A screenshot or a run beats a paragraph.
+- **Hand work back as a recipe, not a hint.** If he has to click or paste anything, give numbered steps with real links, exact button names, and the full text to paste — see [`sops/handoff-to-jerry.md`](sops/handoff-to-jerry.md). Applies to debugging and "look into X" tasks too, not just builds.
 - **Flag his blind spots out loud.** If he didn't mention auth, data loss, cost, or who can see this — raise it. That's the job.
 - **When he says "you decide," decide** — then state what you chose and why.
 - **Keep library and project separate.** `spec.md`, code, and assets live in the *project*; only learnings flow back here.

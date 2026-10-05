@@ -15,6 +15,12 @@ Format:
 
 ---
 
+## 2026-10-05 — jev-selector nightly catalog refresh (CI fix) · impact: med
+- Built: PR #15 on Angularious/jev-selector — test now checks the endpoint path instead of an upstream display name; failure alert opens an issue; Apollo test hardened.
+- Changed from first plan: agent skipped reading this harness on a "look into why it fails" task, stalled twice, and gave Jerry vague next steps. Auto-mode blocked moving `npm test` after the snapshot commit as a "CI bypass", even after Jerry said "do everything."
+- Verified by: fresh `sync:catalog` run (68 APIs / 1046 endpoints), 131 tests, typecheck, `npm run build` all green in a scratch clone.
+- Learned: (a) investigations are not exempt from the router; (b) hand-offs must be click-by-click recipes → [promoted: new `sops/handoff-to-jerry.md` linked from AGENTS.md, Jerry said "always"; the one-line addition to `your-eng-profile.md` was blocked by auto-mode, still pending Jerry]; (c) live-data tests should assert stable fields (paths), not upstream display names → [candidate]; (d) edits that loosen a CI gate get blocked by the harness — tell Jerry up front and give him paste-ready steps → [logged]
+
 ## 2026-09-24 — securedajob close-out (web app) · impact: low
 - Built: GitHub repo (dutherightthing, private), README rewrite, 9 fresh fixtures, registrable-domain fix (open.spotify.com → spotify.com). Merged + pushed `064cb0e`.
 - Changed from first plan: 3 of 7 new real links failed (Spotify, Notion, Samsara) and a passing one leaked "Head of Product Support" into PM peers. Documented as next session's first work instead of relaxing the fixtures.
@@ -171,3 +177,33 @@ Format:
 - Decisions (all Jerry's picks): sibling folder (not a monorepo); tiered rigor (quick vs full); Claude-Code-first but portable markdown so Hermes can use it too; verification bar = "show me it running."
 - Repo roles locked in: spec-kit = plan, ponytail = don't over-build, playwright = prove it runs, hermes = runtime + learning model. Context7 added as a suggested reference tool.
 - Open: install the toolbelt tools; point Hermes at AGENTS.md; decide on a global "read du-code first" rule; push to GitHub.
+
+## 2026-09-27 — Greene & Hafer intake (pricing/scoping) [impact: medium]
+- Quoting in hours ($50/h, then $100/h) broke client trust; switched to one fixed price for a defined result ($1,800, framed as founding-client discount off $3k standard).
+- Check a client's existing tools first (dig MX showed Google Workspace) — a Sheet in their own account beat a custom Vercel+Supabase dashboard on cost, security story, and hours.
+- Vercel Hobby is non-commercial; for client work use Pro or a free tier that allows commercial use (Cloudflare Pages).
+
+## 2026-09-28 — securedajob "Still failing" pass [impact: medium]
+- Of 6 benchmark failures, 2 were input parsing (a bare city, a country in brackets), 2 were the source having nobody, 1 was the scorer, 1 was scored by an old scorer. Only 3 needed product code.
+- Before debugging a failing row: rescore the stored run with the current scorer, then check what the input parsed to, then ask the source for an unfiltered count (free). Each one ruled out a fix.
+- Cache keys built from raw input need a version bump when parsing changes, or the old empty answer is served for a day.
+
+## 2026-09-28 — securedajob: the benchmark's bar was the product question [impact: high]
+- Three rounds of row-by-row fixes (14 → 17 → 19 of 30) hit a wall because the bar itself ("5 recruiters for every job") assumed something the data can't meet: small companies have no recruiters.
+- Jerry reset it: min 3 / max 10, a "who's hiring" list (recruiters → function managers → founders under 100 people), and a check that the top person can be reached by email.
+- Lesson: when fixes keep landing but the score stalls, stop and ask the owner whether the metric still matches what the user needs, before the next fix.
+
+## 2026-09-29 securedajob: "empty" vs "thin" thresholds drift apart
+When a minimum changes (10 → 3), grep every fallback trigger. The nearest-country fill still fired only on an EMPTY list, so a list of 1 passed through every fallback. One threshold constant (MIN_PER_CATEGORY) at every trigger.
+
+## 2026-09-29 securedajob: a "second source" that never agrees is not a check
+Apollo as email cross-check agreed 0 of 23 times; a $0.01 mailbox verifier told real from fake on the same domain. When two finders disagree, verify the one answer rather than pay for a second guess. Probe with a known-real and a made-up address on the same domain.
+
+## 2026-09-29 securedajob: count the titles before writing the title list
+"Head of Consulting/Investment Banking/Audit" matched 1, 8 and 9 people; the industry's own ranks matched hundreds to thousands. A free count per candidate title (icypeas /find-people/count) is the research method: 48 counts, $0, and each ladder in the code cites its numbers.
+
+## 2026-09-30 morning-brief: keyless data first, and check who can see it
+FRED serves any series as CSV with no account or key (`fredgraph.csv?id=<SERIES>`); test the ID with curl before speccing it, since 2 of 20 guessed IDs returned HTML, not data. Before putting internal or user-typed data (e.g. findtherightapi queries) on a public Vercel site, decide aggregate-only vs. login. Agents can't sign in for Jerry, so log-in-gated data means a manual export or a read-only endpoint.
+
+## 2026-09-30 morning-brief: "public data" isn't always free to republish [impact: high]
+FRED hosts third-party series whose owners forbid redistribution (ICE BofA spreads: "reproduction in any form is prohibited"; Indeed postings: "pre-approval required"). On a public site, read each series page's copyright note before adding it; swap for BLS/Fed public-domain series. Also: FRED's CSV tolerates some malformed IDs (UMCSENT_BROKEN still returned data), so test the failure path with a clearly fake ID.
