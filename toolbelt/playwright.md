@@ -18,5 +18,12 @@ Jerry can't read code, so "show me it running" is the bar. Playwright is how an 
 - **In Claude Code sessions:** the built-in browser pane / browser tools already let you load a page and screenshot it — use that for quick verification without any install.
 - **For persistent E2E tests in a project:** `npm init playwright@latest` (or `pip install playwright && playwright install`), write a spec covering the core flow, and leave the run command in the README so Jerry can re-run it.
 
+## Screenshots from the command line (no Dock icon)
+Use Playwright's own browser, never `Google Chrome.app --headless` (that flashes a Chrome icon in Jerry's Dock for every shot):
+```bash
+playwright screenshot --viewport-size=1440,900 <url-or-file://path> out.png
+```
+It runs `chrome-headless-shell` (installed under `~/Library/Caches/ms-playwright/`), which is a bare binary with no Dock presence. Tested 2026-10-06. Add `timeout 60` in front when looping so a hang can't linger. Stop any server you started when done.
+
 ## Pattern for a verification screenshot
 Load → wait for the key element → interact → assert the result is visible → screenshot. Show Jerry the before/after of the main action.

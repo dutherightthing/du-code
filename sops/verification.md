@@ -30,6 +30,13 @@ Jerry can't read code, so "it should work" is worthless to him. He chose **"show
 - **Make it re-runnable.** Leave a one-line command (in a ```bash block) or a saved Playwright check so Jerry can prove it to himself later.
 - **If you couldn't verify something, say which part and why.** Don't paper over it.
 
+## Clean up after yourself (no orphans)
+Verifying means starting things (dev/preview servers, headless browsers, screenshot loops). Left running, they pile up for days — they were the random Chrome icons flashing in Jerry's Dock (found 2026-10-05: servers 6–15 days old, a Chrome stuck 7 days).
+- **Stop what you start before you say "done."** Servers, preview ports, background jobs, browsers. Use `preview_stop` for servers from `preview_start`; for anything else, kill the PID you launched and confirm it's gone (`ps -p <pid>`).
+- **Never launch `/Applications/Google Chrome.app` headless for screenshots.** macOS gives every launch a Dock icon. Use Playwright's bundled browser instead (no Dock icon, no `.app`): `playwright screenshot <url> out.png` — see [`../toolbelt/playwright.md`](../toolbelt/playwright.md).
+- **No bare `--foreground` servers or screenshot loops without a timeout or a stop step.** If a loop could hang (4 screenshots in a row), wrap each call in `timeout 60`.
+- If you leave something running on purpose (Jerry asked for it), say what, on which port, and how to stop it.
+
 ## Minimum evidence to include when you report "done"
 1. What you ran (the command or the steps).
 2. What happened (screenshot / output / passing test).

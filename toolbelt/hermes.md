@@ -25,6 +25,9 @@ See also **hermes-agent-self-evolution** (DSPy + GEPA optimization of skills/pro
 - Verify with `hermes skills list | grep du-code` (should show `local · enabled`). `hermes skills inspect` only checks remote registries, so it won't find a local skill — that's expected.
 - On a Docker/cloud Hermes where `/Users/jerrydu/du-code` doesn't exist, push du-code to GitHub and have the loader clone it first (the SKILL.md already says to).
 
+## Status (2026-10-06): gateway stopped
+Jerry isn't using Hermes, so its always-on launch agent was unloaded and disabled (plist and `~/.hermes` left in place). To bring it back: `launchctl enable gui/$(id -u)/ai.hermes.gateway-orthogonal-work` then `launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/ai.hermes.gateway-orthogonal-work.plist`.
+
 ## Keep in mind
 - Whichever runtime is used, the harness is the same. Don't let Hermes and Claude Code learn different things — the profile + decisions-log in *this repo* are the shared brain both write back to.
 - Claude Code auto-loads du-code via a rule in `~/.claude/CLAUDE.md` ("read du-code/AGENTS.md first on code projects"). Hermes auto-loads it via the skill above.

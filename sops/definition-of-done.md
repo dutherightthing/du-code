@@ -7,6 +7,7 @@ Nothing is "done" until every box that applies is checked. This is the gate. Bec
 - [ ] **It runs.** You executed it / loaded the page / ran the test — and you're showing Jerry proof (see [`verification.md`](verification.md)).
 - [ ] No obvious way for it to lose data, spend money, or expose private info without Jerry knowing.
 - [ ] Errors are handled — it fails with a clear message, not a silent crash or a wrong answer.
+- [ ] **Nothing left running.** Every server, browser, and background job you started is stopped (see [`verification.md`](verification.md#clean-up-after-yourself-no-orphans)).
 - [ ] You explained, in plain English, what it does and how Jerry uses it.
 - [ ] Secrets (keys, passwords) are in `.env` / entered by Jerry — never hardcoded, never committed.
 - [ ] Work is committed to git so it can't be lost (see [`git-hygiene.md`](git-hygiene.md)).

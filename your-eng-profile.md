@@ -29,6 +29,7 @@ Standing constraints and preferences for code projects. Read before scoping; **n
 - Secrets in `.env`, gitignored.
 - Commit working states; don't lose work.
 - Flag anything that costs money before building on it.
+- Stop every server/browser/job you start; screenshots via `playwright screenshot`, never headless Google Chrome (Dock icons). See `sops/verification.md`.
 
 ## Learned preferences
 _(Only **promoted** learnings live here — recurred across ≥2 projects, or Jerry said "always," or a hard fact. Per the promotion gate in [`sops/learning-loop.md`](sops/learning-loop.md). One project's one-off choice stays in `decisions-log.md`, not here. Keep this file lean — ~2 screens max; run a consolidation pass if it bloats.)_
