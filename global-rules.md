@@ -71,7 +71,7 @@ Match the access to the job: **Burner** for untrusted scraping and downloads (sa
 - Scratch work (intermediate results, test scripts, screenshots taken to check your own work, downloaded data) goes in the session scratchpad or temp directory only, never in my folders.
 - Don't create new .md files unless I ask. Plans, summaries and reports go in chat. Each project gets at most one `NOTES.md` (the handoff file above), plus the usual README/AGENTS/spec if the harness calls for them. Projects use `AGENTS.md` for instructions, not separate CLAUDE.md/GEMINI.md copies.
 - Deliverables (things I asked for) go in the project's folder, never in `~`, `Downloads`, a "Claude outputs" folder, or a new top-level folder.
-- New projects live in `~/Github Repositories/<name>` and start with `git init` + `gh repo create <name> --private` and a `.gitignore` covering `.env`, keys, `venv/`, `node_modules/`, `.DS_Store`, before the first file is written, so the deletion rules above can apply.
+- New projects live in `~/Github Repositories/<name>` and start with `git init` + `gh repo create <name> --private` on the **dutherightthing** GitHub account (never Angularious) and a `.gitignore` covering `.env`, keys, `venv/`, `node_modules/`, `.DS_Store`, before the first file is written, so the deletion rules above can apply.
 - New skills go in `~/.claude/skills/<name>/SKILL.md` (then symlink into `~/.agents/skills/`), never as loose .md files.
 
 ## Claude desktop app only: linking to files I create

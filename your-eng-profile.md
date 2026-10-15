@@ -16,7 +16,7 @@ Standing constraints and preferences for code projects. Read before scoping; **n
 ## Stack & tools he already uses
 - **Portfolio site** (`jerrydu-site/`): Next.js 16 + Resend (email). Design tokens in `globals.css`.
 - Many projects are agents / automations / scrapers / scheduled jobs (see `Github Repositories/`).
-- GitHub username: Angularious.
+- GitHub account: **dutherightthing** (always; Jerry said 2026-10-14 — never use Angularious). Old repos still under Angularious: jev-selector, voice-library.
 - Agents in use: Claude Code (primary), Hermes Agent (Nous) installed.
 - Prefer a project's existing stack over introducing new frameworks.
 
